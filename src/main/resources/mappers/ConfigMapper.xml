@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mzp.haikang.dao.ConfigMapper">
+  <resultMap id="BaseResultMap" type="com.mzp.haikang.model.Config">
+    <!--@mbg.generated-->
+    <!--@Table config-->
+    <id column="ip" jdbcType="LONGVARCHAR" property="ip" />
+    <result column="hikUsername" jdbcType="LONGVARCHAR" property="hikusername" />
+    <result column="hikPassword" jdbcType="LONGVARCHAR" property="hikpassword" />
+    <result column="hikPort" jdbcType="LONGVARCHAR" property="hikport" />
+    <result column="deviceID" jdbcType="LONGVARCHAR" property="deviceid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    ip, hikUsername, hikPassword, hikPort, deviceID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from config
+    where ip = #{ip,jdbcType=LONGVARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from config
+    where ip = #{ip,jdbcType=LONGVARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mzp.haikang.model.Config">
+    <!--@mbg.generated-->
+    insert into config (ip, hikUsername, hikPassword, 
+      hikPort, deviceID)
+    values (#{ip,jdbcType=LONGVARCHAR}, #{hikusername,jdbcType=LONGVARCHAR}, #{hikpassword,jdbcType=LONGVARCHAR}, 
+      #{hikport,jdbcType=LONGVARCHAR}, #{deviceid,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mzp.haikang.model.Config">
+    <!--@mbg.generated-->
+    insert into config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="hikusername != null">
+        hikUsername,
+      </if>
+      <if test="hikpassword != null">
+        hikPassword,
+      </if>
+      <if test="hikport != null">
+        hikPort,
+      </if>
+      <if test="deviceid != null">
+        deviceID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ip != null">
+        #{ip,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="hikusername != null">
+        #{hikusername,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="hikpassword != null">
+        #{hikpassword,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="hikport != null">
+        #{hikport,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="deviceid != null">
+        #{deviceid,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mzp.haikang.model.Config">
+    <!--@mbg.generated-->
+    update config
+    <set>
+      <if test="hikusername != null">
+        hikUsername = #{hikusername,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="hikpassword != null">
+        hikPassword = #{hikpassword,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="hikport != null">
+        hikPort = #{hikport,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="deviceid != null">
+        deviceID = #{deviceid,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ip = #{ip,jdbcType=LONGVARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mzp.haikang.model.Config">
+    <!--@mbg.generated-->
+    update config
+    set hikUsername = #{hikusername,jdbcType=LONGVARCHAR},
+      hikPassword = #{hikpassword,jdbcType=LONGVARCHAR},
+      hikPort = #{hikport,jdbcType=LONGVARCHAR},
+      deviceID = #{deviceid,jdbcType=LONGVARCHAR}
+    where ip = #{ip,jdbcType=LONGVARCHAR}
+  </update>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from config
+  </select>
+</mapper>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.sun.jna:examples:v2.12.3782">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../IDEA/repository/com/sun/jna/examples/v2.12.3782/examples-v2.12.3782.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../IDEA/repository/com/sun/jna/examples/v2.12.3782/examples-v2.12.3782-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../IDEA/repository/com/sun/jna/examples/v2.12.3782/examples-v2.12.3782-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

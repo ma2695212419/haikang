@@ -5,12 +5,30 @@ import com.mzp.haikang.commons.AlarmBusiness;
 import com.mzp.haikang.commons.Constants;
 import com.mzp.haikang.commons.HikBean;
 import com.mzp.haikang.commons.HikCache;
+import com.mzp.haikang.dao.ConfigMapper;
+import com.mzp.haikang.model.Config;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import java.util.List;
+
+@Component
 public class FaceAlarmBusiness extends AlarmBusiness {
+
+    @Autowired
+    ConfigMapper configMapper;
+    private static ConfigMapper myUtil;
+
     private static final Logger logger = LogManager.getLogger(FaceAlarmBusiness.class);
     HikBusiness hikBusiness = new HikBusiness();
+
+    @PostConstruct
+    public void init() {
+        myUtil = configMapper;
+    }
 
     public boolean open(String ip, HikBean hikBean) {
         if (!hikBusiness.init(ip, hikBean)) {
@@ -61,8 +79,17 @@ public class FaceAlarmBusiness extends AlarmBusiness {
     }
 
     public static void startProgress() {
-        for (int i = 0; i < HikCache.ipList.length; i++) {
-            new FaceDetectionThread(HikCache.ipList[i], HikCache.mHikBean, Constants.ACTION_TYPE_OPEN).start();
+
+        List<Config> configs = myUtil.selectAll();
+        for (Config config : configs) {
+            System.out.println(config.getIp());
+            HikBean hikBean = new HikBean();
+            hikBean.setUsername(config.getHikusername());
+            hikBean.setPassword(config.getHikpassword());
+            hikBean.setPort(Integer.parseInt(config.getHikport()));
+            hikBean.setAuthorization("token 123");
+            new FaceDetectionThread(config.getIp(), hikBean, Constants.ACTION_TYPE_OPEN).start();
+
         }
     }
 

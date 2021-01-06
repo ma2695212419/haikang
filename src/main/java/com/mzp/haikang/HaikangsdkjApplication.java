@@ -9,7 +9,7 @@ public class HaikangsdkjApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(HaikangsdkjApplication.class, args);
-        FaceAlarmBusiness.load();
+//        FaceAlarmBusiness.load();
         FaceAlarmBusiness.startProgress();
 
     }

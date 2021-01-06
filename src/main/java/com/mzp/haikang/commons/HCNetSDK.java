@@ -13,7 +13,7 @@ import com.sun.jna.win32.StdCallLibrary;
 //SDK接口说明,HCNetSDK.dll
 public interface HCNetSDK extends StdCallLibrary {
 
-    String HCNetSDK = "C:\\Users\\马泽朋\\IdeaProjects\\JLZDDetection\\CommonCode\\hikvision\\HCNetSDK.dll";
+    String HCNetSDK = "D:\\项目\\haikang\\src\\main\\resources\\lib\\hikvision\\HCNetSDK.dll";
             //"C:\Users\ichieh\Work\IdeaProjects\JLZDDetection\CommonCode\HCNetSDKCom\HCNetSDK.dll";
     HCNetSDK INSTANCE = (HCNetSDK) Native.loadLibrary(HCNetSDK, HCNetSDK.class);
     /***宏定义***/
